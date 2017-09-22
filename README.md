@@ -56,6 +56,31 @@ layerB = new Layer Style styles.layer,
 # layerB will be blue
 ```
 
+## Why do this?
+
+The module is really simple, hardly anything at all (just one function and a couple lines, relying heavily on lodash `assign`). So what's the point. I just got really annoyed constantly applying styles to `TextLayers`:
+
+```coffee
+text = new TextLayer
+  fontFamily: '-apple-system',
+  fontSize: 14
+  ...
+```
+
+So I started to store text styles in an objet:
+
+```coffee
+textStyles =
+  fontFamily: '-apple-system'
+  fontSize: 14
+  ...
+
+text = new TextLayer _.assign {}, textStyles,
+  text: 'Heck ya!'
+```
+
+Helpful, but still...got sick of typing that Lodash function over and over and over...
+
 ## Feedback
 
 For questions or comments, please open an issue or [email me](mailto:andrewliebchen@gmail.com). For bugs and feature requests, please open an issue.
